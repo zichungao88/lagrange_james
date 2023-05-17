@@ -1,7 +1,7 @@
 import random
 
 
-def respond(msg) -> str:
+def respond(msg: str) -> str:
     message = msg.lower()
     greetings = ['wassup', 'wsg', 'sheesh']
     trolls = ['bruh', 'boi', 'stfu', 'no u']

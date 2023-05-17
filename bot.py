@@ -1,12 +1,13 @@
 import discord
 import reaction
 
+
 async def send_msg(msg, user_msg, private):
     try:
         response = reaction.respond(user_msg)
         await msg.author.send(response) if private else await msg.channel.send(response)
-    except Exception as error:
-        print(error)
+    except Exception as e:
+        print(e)
 
 
 def run():
@@ -32,6 +33,6 @@ def run():
             await send_msg(msg, user_msg, private=False)
 
     with open('token.txt', 'r') as file:
-        key = file.read()
+        TOKEN = file.read()
 
-    client.run(key)
+    client.run(TOKEN)
