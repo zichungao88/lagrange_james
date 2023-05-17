@@ -3,3 +3,4 @@ lib
 .idea
 pyvenv.cfg
 token.txt
+__pycache__
