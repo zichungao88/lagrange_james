@@ -1,7 +1,6 @@
 import discord
 import reaction
 
-
 async def send_msg(msg, user_msg, private):
     try:
         response = reaction.respond(user_msg)
@@ -11,7 +10,6 @@ async def send_msg(msg, user_msg, private):
 
 
 def run():
-    # TOKEN = ''
     intents = discord.Intents.default()
     intents.message_content = True
     client = discord.Client(intents=intents)
@@ -33,4 +31,7 @@ def run():
         else:
             await send_msg(msg, user_msg, private=False)
 
-    client.run(TOKEN)
+    with open('token.txt', 'r') as file:
+        key = file.read()
+
+    client.run(key)
