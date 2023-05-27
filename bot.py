@@ -30,8 +30,8 @@ def run():
 
         user_msg = str(msg.content)
 
-        if user_msg[0] == '-':
-            user_msg = user_msg[1:]
+        if user_msg[:2] == 'dm':
+            user_msg = user_msg[3:]
             await message(msg, user_msg, private=True)
         else:
             await message(msg, user_msg, private=False)
