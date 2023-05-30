@@ -4,26 +4,53 @@ import random
 def respond(msg: str) -> str:
     message = msg.lower()
 
-    commands = ['help',
-                'flight',
-                'flight2']
-    responses = ['```List of all commands (tbd)```',
-                 'https://tenor.com/view/yummy-tongue-flight-flight-reacts-excited-gif-17057509',
-                 'https://tenor.com/view/flightreacts-cringe-gif-19831193']
+    with open('commands.txt', 'r') as command:
+        commands = command.read().split('\n')
+        commands.pop()
 
-    greetings = ['wsg', 'what up', 'yo', 'hyd', 'sheesh', ':smile:']
-    trolls = ['bruh', 'boi', 'stfu', 'no u', ':clown:']
-    ratios = ['L', 'L + ratio', 'job + ratio', 'counter ratio', 'stfu', ':clown:']
+    with open('responses.txt', 'r') as response:
+        responses = response.read().split('\n')
+        responses.pop()
 
-    if message[0] == '/':
-        if message[1:] in commands:
-            return responses[commands.index(message[1:])]
+    with open('greetings.txt', 'r') as greeting:
+        greetings = greeting.read().split('\n')
+        greetings.pop()
+
+    with open('trolls.txt', 'r') as troll:
+        trolls = troll.read().split('\n')
+        trolls.pop()
+
+    with open('ratios.txt', 'r') as ratio:
+        ratios = ratio.read().split('\n')
+        ratios.pop()
+
+    with open('le.txt', 'r') as le:
+        gm = le.read().split('\n')
+        gm.pop()
+
+    if message[:2] == '//':
+        if message[2:] == 'help':
+            return '```' \
+                   'List of all commands:\n' \
+                   '(Note: all commands are in lowercase)\n' \
+                   '\n' \
+                   'help (shows this message) \n' \
+                   'cap\n' \
+                   'daddy\n' \
+                   'flight\n' \
+                   'flight2\n' \
+                   'hector' \
+                   '```'
+        elif message[2:] in commands:
+            return responses[commands.index(message[2:])]
         else:
             return 'Command not found'
     else:
-        if message == 'hello' or message == 'hi':
+        if message.lower() in greetings:
             return random.choice(greetings)
-        elif message == 'ur mom' or message == 'L':
+        elif message.lower() in trolls or message.lower() == 'l':
             return random.choice(trolls)
-        elif message == 'ratio':
+        elif message.lower() in ratios or message.lower() == 'l':
             return random.choice(ratios)
+        elif message.lower() == 'le':
+            return random.choice(gm)

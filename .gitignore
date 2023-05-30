@@ -5,3 +5,9 @@ pyvenv.cfg
 token.txt
 __pycache__
 .DS_Store
+commands.txt
+responses.txt
+greetings.txt
+trolls.txt
+ratios.txt
+le.txt
