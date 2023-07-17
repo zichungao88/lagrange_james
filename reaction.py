@@ -47,7 +47,8 @@ def respond(msg: str) -> str:
                    'daddy\n' \
                    'flight\n' \
                    'flight2\n' \
-                   'flight3\n' \
+                   'flight3\n'\
+                   'flight4\n'\
                    'hector\n' \
                    'inertia\n' \
                    'league\n' \
@@ -55,7 +56,11 @@ def respond(msg: str) -> str:
                    'monke2\n' \
                    'monke3\n' \
                    'monke4\n' \
+                   'stfu\n' \
+                   'stfu2\n' \
+                   'stfu3\n' \
                    'stop\n' \
+                   'teddy\n' \
                    'wtf\n' \
                    'wtf2\n' \
                    'wtf3\n' \
