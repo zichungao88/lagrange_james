@@ -28,9 +28,13 @@ def respond(msg: str) -> str:
         ratios = ratio.read().split('\n')
         ratios.pop()
 
-    with open('le.txt', 'r') as le:
-        gm = le.read().split('\n')
-        gm.pop()
+    with open('le.txt', 'r') as gm:
+        le = gm.read().split('\n')
+        le.pop()
+
+    with open('players.txt', 'r') as player:
+        players = player.read().split('\n')
+        players.pop()
 
     if message[:2] == '//':
         if message[2:] == 'help':
@@ -80,4 +84,6 @@ def respond(msg: str) -> str:
         elif message.lower() in ratios or message.lower() == 'l':
             return random.choice(ratios)
         elif message.lower() == 'le':
-            return random.choice(gm)
+            return random.choice(le)
+        elif message.lower() == 'who':
+            return random.choice(players)
