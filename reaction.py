@@ -36,17 +36,21 @@ def respond(msg: str) -> str:
         players = player.read().split('\n')
         players.pop()
 
+    with open('entities.txt', 'r') as entity:
+        entities = entity.read().split('\n')
+        entities.pop()
+
     if message[:2] == '//':
         if message[2:] == 'help':
             return '```' \
-                   'List of all commands:\n' \
+                   'List of all commands (prefix: //)\n' \
                    '(Note: all commands are in lowercase)\n' \
                    '\n' \
                    'help (shows this message) \n' \
-                   'accent\n' \
                    'bowling\n' \
                    'bowling2\n' \
-                   'cap\n' \
+                   'cap\n'\
+                   'cb\n'\
                    'cri\n' \
                    'daddy\n' \
                    'flight\n' \
@@ -60,10 +64,12 @@ def respond(msg: str) -> str:
                    'monke2\n' \
                    'monke3\n' \
                    'monke4\n' \
+                   'naughty\n' \
                    'stfu\n' \
                    'stfu2\n' \
                    'stfu3\n' \
-                   'stop\n' \
+                   'stop\n'\
+                   'sweep\n'\
                    'teddy\n' \
                    'wtf\n' \
                    'wtf2\n' \
@@ -83,7 +89,9 @@ def respond(msg: str) -> str:
             return random.choice(trolls)
         elif message.lower() in ratios or message.lower() == 'l':
             return random.choice(ratios)
-        elif message.lower() == 'le':
+        elif message.lower() == '.':
             return random.choice(le)
         elif message.lower() == 'who':
             return random.choice(players)
+        elif message.lower() == 'what':
+            return random.choice(entities)
