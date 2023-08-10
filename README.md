@@ -2,6 +2,6 @@
 
 A Discord Bot created and developed by jgcringevlogs#4756
 
-Default Command: "//"
+Default Command: //
 
 Credit: @Indently on YouTube
