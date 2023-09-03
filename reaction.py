@@ -68,8 +68,8 @@ def respond(msg: str) -> str:
                    'stfu\n' \
                    'stfu2\n' \
                    'stfu3\n' \
-                   'stop\n'\
-                   'sweep\n'\
+                   'stop\n' \
+                   'sweep\n' \
                    'teddy\n' \
                    'wtf\n' \
                    'wtf2\n' \
