@@ -1,16 +1,13 @@
 import random
+import json
 
 
 def respond(msg: str) -> str:
     message = msg.lower()
 
-    with open('commands.txt', 'r') as command:
-        commands = command.read().split('\n')
-        commands.pop()
-
-    with open('responses.txt', 'r') as response:
-        responses = response.read().split('\n')
-        responses.pop()
+    with open('commands.json', 'r') as command:
+        command_data = json.load(command)
+        commands = command_data['commands']
 
     with open('greetings.txt', 'r') as greeting:
         greetings = greeting.read().split('\n')
@@ -41,45 +38,17 @@ def respond(msg: str) -> str:
         entities.pop()
 
     if message[:2] == '//':
-        if message[2:] == 'help':
-            return '```' \
-                   'List of all commands (prefix: //)\n' \
-                   '(Note: all commands are in lowercase)\n' \
-                   '\n' \
-                   'help (shows this message) \n' \
-                   'bowling\n' \
-                   'bowling2\n' \
-                   'cap\n'\
-                   'cb\n'\
-                   'cri\n' \
-                   'daddy\n' \
-                   'flight\n' \
-                   'flight2\n' \
-                   'flight3\n'\
-                   'flight4\n'\
-                   'hector\n' \
-                   'inertia\n' \
-                   'league\n' \
-                   'monke\n' \
-                   'monke2\n' \
-                   'monke3\n' \
-                   'monke4\n' \
-                   'naughty\n' \
-                   'stfu\n' \
-                   'stfu2\n' \
-                   'stfu3\n' \
-                   'stop\n' \
-                   'sweep\n' \
-                   'teddy\n' \
-                   'wtf\n' \
-                   'wtf2\n' \
-                   'wtf3\n' \
-                   'zina' \
-                   '```'
-        elif message[2:] in commands:
-            return responses[commands.index(message[2:])]
+        command = message[2:]
+        if command in commands:
+            if commands[command] == '__HELP__':
+                help_msg = '```List of all commands (prefix: //)\n(Note: all commands are case sensitive (lowercase only))\n\n'
+                sorted_commands = ['help'] + sorted(cmd for cmd in commands.keys() if cmd != 'help')
+                help_msg += '\n'.join(f'{cmd} {'(shows this message)' if cmd == 'help' else ''}' for cmd in sorted_commands)
+                help_msg += '```'
+                return help_msg
+            return commands[command]
         else:
-            return 'Command not found'
+            return 'Invalid command'
     else:
         if message.lower() in greetings:
             return random.choice(greetings)
@@ -95,3 +64,4 @@ def respond(msg: str) -> str:
             return random.choice(players)
         elif message.lower() == 'what':
             return random.choice(entities)
+        return ''
